@@ -11,6 +11,7 @@ const PostBody = ({ body }: { body: string }) => {
           const { src, alt } = attribs;
           return (
             <Image
+              priority
               className='object-cover object-center w-full my-3 rounded-md h-auto max-h-[300px] md:max-h-[500px]'
               src={src}
               alt={alt}

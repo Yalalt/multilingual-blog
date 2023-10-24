@@ -1,14 +1,32 @@
+'use client';
 /* eslint-disable react/no-unescaped-entities */
 import directus from '@/lib/directus';
 import { createItem } from '@directus/sdk';
 import { revalidateTag } from 'next/cache';
 import Image from 'next/image';
 import React from 'react';
-import { getDictionary } from '@/lib/getDictionary';
 
-const CTACard = async ({ locale }: { locale: string }) => {
-  const dictionary = await getDictionary(locale);
+// eslint-disable-next-line @next/next/no-async-client-component
+const CTACard = async ({ dictionary }: { dictionary: string }) => {
+  // Client Component approach
+  const [email, setEmail] = React.useState('');
+  const [isHandling, setIsHandling] = React.useState(false);
 
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault();
+      setIsHandling(true);
+      await directus.request('subscribers', createItem(email, email));
+
+      setIsHandling(false);
+      setEmail('');
+    } catch (error) {
+      console.log(error);
+      setIsHandling(false);
+    }
+  }
+
+  // Server action component ep-67
   // const formAction = (formData: FormData) => {
   //   try {
   //     const email = formData.get('email');
@@ -26,7 +44,7 @@ const CTACard = async ({ locale }: { locale: string }) => {
   //   }
   // };
 
-  const subscribersCount = 12;
+  // const subscribersCount = 12;
   // await fetch(
   //   `${process.env.NEXT_PUBLIC_API_URL}items/subscribers?meta=total_count&access_token=${process.env.ADMIN_TOKEN}`,
   //   {
@@ -55,32 +73,34 @@ const CTACard = async ({ locale }: { locale: string }) => {
       <div className='relative z-20'>
         <div className='font-medium text-lg'>#explorertheworld</div>
         <h3 className='mt-3 text-4xl font-semibold'>{dictionary.ctaCard.title}!</h3>
-        <p className='max-w-lg mt-2 text-lg'>
-          {dictionary.ctaCard.description}!
-        </p>
+        <p className='max-w-lg mt-2 text-lg'>{dictionary.ctaCard.description}!</p>
         {/* Form */}
         <form
-          key={subscribersCount + 'subscribers-form'}
+          // server action aproach
+          // key={subscribersCount + 'subscribers-form'}
           // action={formAction}
+          onSubmit={submitHandler}
           className='flex items-center w-full gap-2 mt-6'
         >
           <input
             type='email'
             name='email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className='w-full px-3 py-2 bg-white/80 text-base rounded-md outline-none md:w-auto placeholder:text-sm focus:ring-2 ring-neutral-600'
             placeholder={dictionary.ctaCard.placeholder}
           />
           <button className='px-3 py-2 whitespace-nowrap rounded-md bg-neutral-900 text-neutral-200' type='submit'>
-            {dictionary.ctaCard.button}
+            {!isHandling ? dictionary.ctaCard.button : "Sending..."}
           </button>
         </form>
 
         {/* Subscribers count */}
-        <div className='mt-5 text-neutral-700'>
+        {/* <div className='mt-5 text-neutral-700'>
           {dictionary.ctaCard.subscriberText1}{' '}
           <span className='px-2 py-1 text-sm rounded-md bg-neutral-700 text-neutral-100'>{subscribersCount}</span>
           {" "}{dictionary.ctaCard.subscriberText2}
-        </div>
+        </div> */}
       </div>
     </div>
   );

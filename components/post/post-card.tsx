@@ -18,7 +18,7 @@ const PostCard = async ({ post, layout = 'horizontal', reverse = false, locale }
       className={`@container ${
         layout === 'horizontal' ? 'grid items-center grid-cols-1 md:grid-cols-2 gap-10' : 'space-y-10 '
       }`}
-      href={`/post/${post.slug}`}
+      href={`/${locale}/post/${post.slug}`}
     >
       {/* Post Image */}
       <Image

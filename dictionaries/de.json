@@ -1,0 +1,25 @@
+{
+  "navigation": {
+    "links": {
+      "cities": "Städte",
+      "experience": "Erlebnis"
+    }
+  },
+  "buttons": {
+    "readMore": "Mehr lesen"
+  },
+  "ctaCard": {
+    "title": "Entdecke die Welt mit mir",
+    "description": "Paris ist die Hauptstadt und die bevölkerungsreichste Stadt Frankreichs. Sie liegt an der Seine im Norden des Landes, im Herzen der Region Île-de-France.",
+    "button": "Anmelden",
+    "placeholder": "Gib deine E-Mail-Adresse ein",
+    "subscriberText1": "Schließe dich unseren",
+    "subscriberText2": "Abonnenten an!"
+  },
+  "footer": {
+    "description": "Ein minimalistischer und schöner Reiseblog, der wunderschöne Reiseziele und Reisetipps präsentiert.",
+    "rightsText": "Alle Rechte vorbehalten | Urheberrecht",
+    "creatorText": "Erstellt von",
+    "currentlyAtText": "Derzeit an"
+  }
+}

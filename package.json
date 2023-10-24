@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@directus/sdk": "^12.1.0",
+    "@formatjs/intl-localematcher": "^0.4.2",
     "@tailwindcss/container-queries": "^0.1.1",
+    "@types/negotiator": "^0.6.2",
+    "html-react-parser": "^4.2.9",
     "lucide-react": "^0.288.0",
     "luxon": "^3.4.3",
+    "negotiator": "^0.6.3",
     "next": "13.5.6",
     "react": "^18",
     "react-dom": "^18",

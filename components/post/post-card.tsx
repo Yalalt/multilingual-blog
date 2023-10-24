@@ -8,24 +8,31 @@ interface PostProps {
   post: Post;
   layout?: 'vertical' | 'horizontal';
   reverse?: boolean;
+  locale: string;
 }
 
-const PostCard = ({ post, layout = 'horizontal', reverse = false }: PostProps) => {
+const PostCard = async ({ post, layout = 'horizontal', reverse = false, locale }: PostProps) => {
+
   return (
     <Link
-      className={`@container ${layout === 'horizontal' ? 'grid items-center grid-cols-1 md:grid-cols-2 gap-10' : 'space-y-10 '}`}
+      className={`@container ${
+        layout === 'horizontal' ? 'grid items-center grid-cols-1 md:grid-cols-2 gap-10' : 'space-y-10 '
+      }`}
       href={`/post/${post.slug}`}
     >
       {/* Post Image */}
       <Image
-        className={`rounded-md w-full object-cover object-center h-full max-h-[300px] ${reverse ? 'md:order-last' : ''}`}
-        src={post.image}
+        className={`rounded-md w-full object-cover object-center h-full max-h-[300px] ${
+          reverse ? 'md:order-last' : ''
+        }`}
+        // src={`${process.env.NEXT_PUBLIC_ASSETS_URL}${post.image}?key=optimised`}
+        src={`${post.image}`}
         width={600}
         height={300}
         alt={post.title}
       />
       {/* Post Content */}
-      <PostContent post={post} />
+      <PostContent locale={locale} post={post} />
     </Link>
   );
 };

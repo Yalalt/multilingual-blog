@@ -1,0 +1,25 @@
+{
+  "navigation": {
+    "links": {
+      "cities": "Cities",
+      "experience": "Experience"
+    }
+  },
+  "buttons": {
+    "readMore": "Read more"
+  },
+  "ctaCard": {
+    "title": "Explore the world with me",
+    "description": "Paris is the capital and most populous city of France. It is located on the Seine River, in the north of the country, at the heart of the Île-de-France region.",
+    "button": "Sign Up",
+    "placeholder": "Write your email",
+    "subscriberText1": "Join our",
+    "subscriberText2": "subscribers now!"
+  },
+  "footer": {
+    "description": "A minimal and lovely travel blog which showcases beautiful destinations and travel tips.",
+    "rightsText": "All rights reserved | Copyright",
+    "creatorText": "Created with by",
+    "currentlyAtText": "Currently at"
+  }
+}
